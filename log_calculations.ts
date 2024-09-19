@@ -1,32 +1,16 @@
 /**
-* The program calculates how many logs
-* 	should be put on a truck.
-*
+* Finds how much logs a truck can carry if the max weight it can carry is 1100 kg and each log is 20 kg/m
 * By: Mikael Amare
 * Version: 1.0
-* Since: 2024-09-18
-*/
+* Since: 2024-09-19
+*/ 
 
 import { createPrompt } from 'bun-promptx'
 
+const length = createPrompt('Enter log length (m): ')
+const numValue:number = parseFloat(length)
+const maxLogsCarried = 1100 / (20 * parseFloat(length))
 
-
-const name = createPrompt('What is your name? ')
-
-console.log(`Hey there ${String(name.value)}`)
-
-
-
-const ageString = createPrompt('What is your age? ')
-
-let ageNumber = parseInt(ageString.value)
-
-ageNumber = ageNumber - 10
-
-console.log(`Age is > ${ageNumber}`)
-
-
+console.log(`A truck can carry ${maxLogsCarried} ${length} meter long logs.`)
 
 console.log('\nDone.')
-
-
