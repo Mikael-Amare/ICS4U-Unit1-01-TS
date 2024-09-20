@@ -5,21 +5,11 @@
  * Since: 2024-09-19
  */ 
 
-import { createPrompt } from 'bun-promptx';
+import { createPrompt } from 'bun-promptx'
 
-async function main() {
-    const length = await createPrompt('Enter log length (m): ');
-    const numValue = parseFloat(length);
+const length = createPrompt('Enter log length (m): ')
+const maxLogsCarried = 1100 / (20 * parseFloat(length.value))
 
-    if (isNaN(numValue) || numValue <= 0) {
-        console.log('Please enter a valid positive number for the log length.');
-        return;
-    }
+console.log(`A truck can carry ${maxLogsCarried} ${length.value} meter long logs.`)
 
-    const maxLogsCarried = Math.floor(1100 / (20 * numValue));
-
-    console.log(`A truck can carry ${maxLogsCarried} ${numValue} meter long logs.`);
-    console.log('\nDone.');
-}
-
-main();
+console.log('\nDone.')
